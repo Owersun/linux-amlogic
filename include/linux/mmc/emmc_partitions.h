@@ -37,8 +37,8 @@
 #define     RESULT_UNSUP_CARD               3
 
 struct partitions {
-	/* identifier string */
-	char name[MAX_PART_NAME_LEN];
+	/* identifier string plus zero terminator */
+	char name[MAX_PART_NAME_LEN + 1];
 	/* partition size, byte unit */
 	uint64_t size;
 	/* offset within the master space, byte unit */

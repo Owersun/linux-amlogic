@@ -669,9 +669,11 @@ static int configs_list_nodes_in(struct mconfig_node *node,
 {
 	int ret;
 	int pn_size = 0;
-	char cprefix[MAX_PREFIX_NAME + MAX_ITEM_NAME];
+	char cprefix[MAX_PREFIX_NAME + MAX_ITEM_NAME + 1];
 	char *c_prefix;
 	char rw[4][4] = { "N", "r", "w", "rw" };
+
+	cprefix[MAX_PREFIX_NAME + MAX_ITEM_NAME] = '\0';
 
 	if (!node || !buf || size <= 0)
 		return 0;

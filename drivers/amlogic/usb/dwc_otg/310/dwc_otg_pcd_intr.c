@@ -2435,12 +2435,6 @@ static void complete_ep(dwc_otg_pcd_ep_t *ep)
 			}
 		}
 
-		DWC_DEBUGPL(DBG_PCDV,
-			    "addr %p,	 %d-%s len=%d cnt=%d xsize=%d pktcnt=%d\n",
-			    &out_ep_regs->doeptsiz, ep->dwc_ep.num,
-			    ep->dwc_ep.is_in ? "IN" : "OUT",
-			    ep->dwc_ep.xfer_len, ep->dwc_ep.xfer_count,
-			    deptsiz.b.xfersize, deptsiz.b.pktcnt);
 	}
 
 	/* Complete the request */
