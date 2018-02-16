@@ -29,6 +29,8 @@
 		num_of_pp = <3> ;
 		def_clk = <4> ;
 		sc_mpp = <3>;/* number of pp used most of time.*/
+		min_pp = <3>;
+		min_clk = <2>;
 		tbl =  <&clk125_cfg
 			&clk285_cfg
 			&clk400_cfg
