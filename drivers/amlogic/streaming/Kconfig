@@ -1,0 +1,105 @@
+menuconfig AMLOGIC_STREAMING
+        boolean "Amlogic AV Streaming support"
+        default y
+        help
+          Driver for the AV streaming ports.
+
+if AMLOGIC_STREAMING
+
+config AMLOGIC_MEDIA_VDEC_H264
+        tristate "Amlogic H264 Video Decoder"
+        default y
+        help
+          Driver for h264 video decoder
+
+config AMLOGIC_MEDIA_VDEC_H264_MULTI
+        tristate "Amlogic H264 Multi Video Decoder"
+        default y
+        help
+          Driver for h264 multiframe video decoder
+
+config AMLOGIC_MEDIA_VDEC_H264_MVC
+        tristate "Amlogic H264 MVC Video Decoder"
+        default y
+        help
+          Driver for h264 mvc video decoder
+
+config AMLOGIC_MEDIA_VDEC_H264_4K2K
+        tristate "Amlogic H264 4k Video Decoder"
+        default y
+        help
+          Driver for h264 4k video decoder
+
+config AMLOGIC_MEDIA_VDEC_H265
+        tristate "Amlogic H265 Video Decoder"
+        default y
+        help
+          Driver for h265 video decoder
+
+config AMLOGIC_MEDIA_VDEC_MPEG4
+        tristate "Amlogic Mpeg4 Video Decoder"
+        default y
+        help
+          Driver for mpeg4 video decoder
+
+config AMLOGIC_MEDIA_VDEC_MPEG4_MULTI
+        tristate "Amlogic Mpeg4 Multi Video Decoder"
+        default y
+        help
+          Driver for mpeg4 multiframe video decoder
+
+config AMLOGIC_MEDIA_VDEC_MPEG12
+        tristate "Amlogic Mpeg1/2 Video Decoder"
+        default y
+        help
+          Driver for mpeg1/2 video decoder
+
+config AMLOGIC_MEDIA_VDEC_MJPEG
+        tristate "Amlogic Motion JPEG Video Decoder"
+        default y
+        help
+          Driver for mjpeg video decoder
+
+config AMLOGIC_MEDIA_VDEC_MJPEG_MULTI
+        tristate "Amlogic Motion JPEG Multi Video Decoder"
+        default y
+        help
+          Driver for mjpeg multiframe video decoder
+
+config AMLOGIC_MEDIA_VDEC_VC1
+        tristate "Amlogic VC1 Video Decoder"
+        default y
+        help
+          Driver for vc1 video decoder
+
+config AMLOGIC_MEDIA_VDEC_VP9
+        tristate "Amlogic VP9 Video Decoder"
+        default y
+        help
+          Driver for vp9 video decoder
+
+config AMLOGIC_MEDIA_VDEC_REAL
+        tristate "Amlogic REAL Video Decoder"
+        default y
+        help
+          Driver for real video decoder
+
+config AMLOGIC_MEDIA_VDEC_AVS
+        tristate "Amlogic AVS Video Decoder"
+        default y
+        help
+          Driver for avs video decoder
+
+config AMLOGIC_MEDIA_VENC_H264
+        tristate "Amlogic H264 Video Encoder"
+        default y
+        help
+          Driver for h264 video encoder
+
+config AMLOGIC_MEDIA_VENC_H265
+        tristate "Amlogic H265 Video Encoder"
+        default y
+        help
+          Driver for h265 video encoder
+
+endif

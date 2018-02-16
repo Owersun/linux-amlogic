@@ -57,6 +57,8 @@ obj-$(CONFIG_AMLOGIC_PWM)	+= pwm/
 
 obj-$(CONFIG_AMLOGIC_MEDIA_ENABLE)	+=	media/
 
+obj-$(CONFIG_AMLOGIC_STREAMING)		+= streaming/
+
 obj-$(CONFIG_AMLOGIC_MMC)             += mmc/
 
 obj-$(CONFIG_AMLOGIC_NAND)	+= mtd/
