@@ -54,6 +54,9 @@
 #include <linux/reset.h>
 #include <linux/of_mdio.h>
 #include "dwmac1000.h"
+#ifdef CONFIG_AMLOGIC_CPU_INFO
+#include <linux/amlogic/cpu_version.h>
+#endif
 
 #ifdef CONFIG_DWMAC_MESON
 #include <phy_debug.h>
@@ -1551,6 +1554,24 @@ static int stmmac_get_hw_features(struct stmmac_priv *priv)
 	return ret;
 }
 
+#ifdef CONFIG_AMLOGIC_CPU_INFO
+static void stmmac_generate_mac_from_cpuserial(struct net_device *dev)
+{
+	unsigned char chipid[CHIPID_LEN];
+	u8 buf[6];
+
+	pr_info("%s: generate MAC from CPU serial number\n",
+		dev->name);
+	cpuinfo_get_chipid(chipid, CHIPID_LEN);
+	memcpy(buf, chipid + CHIPID_LEN - 6, 6);
+	buf[0] &= 0xfe;  /* clear multicast bit */
+	buf[0] |= 0x02;  /* set local assignment bit (IEEE802) */
+	pr_info("%s: generated MAC address: %pM\n",
+		dev->name, buf);
+	ether_addr_copy(dev->dev_addr, buf);
+}
+#endif
+
 /**
  * stmmac_check_ether_addr - check if the MAC addr is valid
  * @priv: driver private structure
@@ -1563,6 +1584,10 @@ static void stmmac_check_ether_addr(struct stmmac_priv *priv)
 	if (!is_valid_ether_addr(priv->dev->dev_addr)) {
 		priv->hw->mac->get_umac_addr(priv->hw,
 					     priv->dev->dev_addr, 0);
+#ifdef CONFIG_AMLOGIC_CPU_INFO
+		if (!is_valid_ether_addr(priv->dev->dev_addr))
+			stmmac_generate_mac_from_cpuserial(priv->dev);
+#endif
 		if (!is_valid_ether_addr(priv->dev->dev_addr))
 			eth_hw_addr_random(priv->dev);
 		pr_info("%s: device MAC address %pM\n", priv->dev->name,
